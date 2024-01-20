@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-from config_data.config import Config, load_config
+from config_data.config import load_config
 from handlers import user_handlers
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -20,7 +20,7 @@ async def main():
     
     logger.info('Starting bot')
 
-    config: Config = load_config()
+    config = load_config()
 
     bot: Bot = Bot(token=config.tg_bot.token, 
                    parse_mode='HTML')

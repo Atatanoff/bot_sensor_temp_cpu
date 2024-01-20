@@ -1,11 +1,11 @@
 import psutil
 
-def triger_temp():
+def triger_temp(temp: int):
     temps = psutil.sensors_temperatures()
     if temps:
         for _, entries in temps.items():
             for entry in entries:
-                if entry.current > 75:
+                if entry.current > temp:
                     return True
                 else: return False
         

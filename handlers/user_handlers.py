@@ -16,5 +16,7 @@ async def process_start_command(message: Message):
 
 
 async def send_message_temp(bot: Bot):
-    if triger_temp():
-        await bot.send_message(text=sensor_temp(), chat_id=load_config().user_id.id)
+    t = load_config().max_temp.temp
+    if triger_temp(t):
+        msg = f"Превышено максимальное значение {t}&#176;C\n"
+        await bot.send_message(text=msg+sensor_temp(), chat_id=load_config().user_id.id)
